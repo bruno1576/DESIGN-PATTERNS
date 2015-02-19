@@ -9,12 +9,11 @@
 
 
             use Projeto3\CLabel;
-            use Projeto3\CloseForm;
             use Projeto3\CSubmit;
-            use Projeto3\OpenForm;
-            use Projeto3\Render;
+            use Projeto3\Form;
 
-            $form = new OpenForm();
+
+            $form = new Form();
             $form->OpenForm("form1", "POST", "", "");
 
             $Submit = new CSubmit();
@@ -24,16 +23,16 @@
 
             $label = new CLabel();
             $label->CLabel("Digite algo", "Digite algo");
+            $closeform = new Form();
+            $closeform->CloseForm();
 
-            $CloseForm = new CloseForm();
-            $Render = new Render();
-            $Render->addElementos($form->getHtml());
-            $Render->addElementos($label->getHtml());
-            $Render->addElementos($campo->getHtml());
-            $Render->addElementos($Submit->getHtml());
-            $Render->addElementos($CloseForm->getHtml());
+            $form->addElementos($form->getHtml());
+            $form->addElementos($label->getHtml());
+            $form->addElementos($campo->getHtml());
+            $form->addElementos($Submit->getHtml());
+            $form->addElementos($closeform->getHtml());
 
-            echo $Render->Render();
+            echo $form->Render();
 
             ?>
 
